@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;  
   justify-content: center;
-  width: 15%;
+  width: fit-content;
   background-color: var(--accent-color);
   color: #fff;
   border: none;
@@ -44,9 +44,6 @@
 }
 
 @media screen and (max-width: 768px) {
- .cta-button {
-  width: 90%;
- } 
  .cta-content h2 {
   font-size: 28px;
  }

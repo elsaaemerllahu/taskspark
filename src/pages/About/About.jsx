@@ -17,7 +17,7 @@ const About = () => {
 
         <section className="about-hero-section">
           <div className="about-hero-content">
-            <h1>We Empower Productivity</h1>
+            <h1>We help you organize tasks and boost productivity</h1>
             <p>At TaskSpark, we build tools that inspire action, clarity, and growth. Our mission is to help you achieve more with less stress.</p>
           </div>
           <div className="about-hero-image">

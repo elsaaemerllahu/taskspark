@@ -44,8 +44,17 @@
   font-size: 0.95rem;
   color: #555;
 }
+@media screen and (max-width: 1024px){
+  .feature-card {
+    width: 175px;
+  }
+  .feature-card p {
+    display: none;
+  }
+}
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 800px) {
   .features-section {
     padding: 0;
   }
@@ -58,6 +67,9 @@
     margin-bottom: 1rem;
   }
   .feature-card {
-    width: 360px;
+    width: 300px;
+  }
+  .feature-card p {
+    display: block;
   }
 }

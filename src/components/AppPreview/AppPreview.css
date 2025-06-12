@@ -5,6 +5,7 @@
   padding: 4rem;
   background-color: #f5f5f5;
   gap: 0rem;
+  border-radius: 2rem;
   flex-wrap: wrap;
 }
 .preview-content {
@@ -44,6 +45,11 @@
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (max-width: 1024px) {
+  .preview-text {
+    flex: 1 1 245px;
+  }
+}
 
 @media screen and (max-width: 800px) {
   .preview-image {

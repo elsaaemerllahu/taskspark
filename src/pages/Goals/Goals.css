@@ -214,7 +214,7 @@
 }
 
 .goal-item.priority-high {
-  border-top: 3px solid #dc2626;
+  border-top: 3px solid var(--accent-color);
 }
 
 .goal-item.priority-medium {
@@ -257,7 +257,7 @@
 }
 
 .priority-high {
-  color: #dc2626;
+  color: var(--accent-color);
 }
 
 .priority-medium {
