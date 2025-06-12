@@ -25,6 +25,15 @@
   overflow-x: auto;
 }
 
+.kanban-board::-webkit-scrollbar {
+  width: 8px;
+}
+
+.kanban-board::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
 .my-tasks-header {
   display: flex;
   justify-content: space-between;
@@ -311,10 +320,11 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 20px;
+    height: 100vh;
   }
 
   .kanban-column {
-    min-width: 255px;
+    min-width: 235px;
   }
 
   .main-content-my-tasks {

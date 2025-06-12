@@ -553,6 +553,14 @@
   align-items: flex-end;
 }
 
+@media screen and (max-width: 1025px) {
+  .main-content-reporting {
+    margin-left: 230px;
+    padding: 0;
+    padding-right: 10px;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .main-content-reporting {
     width: 80%;

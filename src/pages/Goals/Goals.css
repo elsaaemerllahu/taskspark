@@ -23,6 +23,16 @@
   margin: 0px auto;
   overflow-x: auto;
 }
+.goals::-webkit-scrollbar {
+  width: 8px;
+}
+
+.goals::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+
 
 .goals-header {
   display: flex;
@@ -218,7 +228,7 @@
 }
 
 .goal-item.priority-medium {
-  border-top: 3px solid #eab308;
+  border-top: 3px solid #fe8a1e;
 }
 
 .goal-item.priority-low {
@@ -261,7 +271,7 @@
 }
 
 .priority-medium {
-  color: #b45309;
+  color: #d6751a;
 }
 
 .priority-low {
@@ -466,6 +476,10 @@
 @media screen and (max-width: 1025px) {
   .main-content-goals {
     margin-left: 210px;
+    padding-right: 10px;
+  }
+  .goals-list {
+        grid-template-columns: repeat(auto-fill, minmax(245px, 2fr));
   }
 }
 
