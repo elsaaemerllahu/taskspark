@@ -47,6 +47,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
     exit;
 }
+// DELETE reminder
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    if (!isset($data['id'])) {
+        echo json_encode(['error' => 'Reminder ID required']);
+        exit;
+    }
+
+    $stmt = $pdo->prepare("DELETE FROM reminders WHERE id = ? AND user_id = ?");
+    $stmt->execute([$data['id'], $userId]);
+
+    if ($stmt->rowCount() > 0) {
+        echo json_encode(['success' => true]);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Reminder not found or unauthorized']);
+    }
+    exit;
+}
 
 // PUT to update reminder
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {

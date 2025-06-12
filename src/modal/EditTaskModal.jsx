@@ -42,14 +42,12 @@ const EditTaskModal = ({ task, onClose, onTaskUpdated }) => {
     }
   };
     const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
       await fetch(`/backend/assigned_tasks.php?id=${id}`, { 
         method: 'DELETE',
         credentials: 'include'
       });
       fetchTasks();
-    }
-  };
+    };
 
     const fetchTasks = () => {
     const url = filterAssignee ? `/backend/assigned_tasks.php?assigned_to=${encodeURIComponent(filterAssignee)}` : '/backend/assigned_tasks.php';

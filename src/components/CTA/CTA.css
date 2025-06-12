@@ -1,216 +1,53 @@
-.assigned-tasks {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px var(--border-color);
-  animation: floatIn 0.4s ease forwards;
-  height: 585px;
+.cta-section {
+  background-color: var(--text-color);
+  color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 2rem;
 }
-
-.assigned-tasks-header {
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-bottom: 1.2rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.75rem;
-  color: var(--text-color);
-}
-
-.assigned-tasks-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.assigned-tasks-table th,
-.assigned-tasks-table td {
-  text-align: left;
-  padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.assigned-tasks-table th {
-  color: var(--secondary-text);
-  font-weight: 500;
-}
-
-.assigned-tasks-table tr:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-.assigned-tasks-table-wrapper {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.assigned-tasks-table-wrapper::-webkit-scrollbar {
-  width: 4px;
-}
-
-.assigned-tasks-table-wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--border-color);
-  border-radius: 4px;
-}
-
-.assigned-tasks-table-wrapper::-webkit-scrollbar-button {
-  display: none;
-}
-
-.assigned-tasks-table thead th {
-  position: sticky;
-  top: 0;
-  background-color: #fcfcfc;
-  z-index: 1;
-}
-
-.assigned-tasks-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+.cta-content {
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 }
 
-.search-input {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  max-width: 200px;
-  background-color: #fff;
-  color: var(--text-color);
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.1);
-}
-
-.assign-task-btn {
-  background-color: var(--secondary-text);
-  color: #ffffff;
-  text-decoration: none;
-  box-shadow: 0 2px 10px #c2c6cb66;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 0.9rem;
-  border-radius: 20px;
-  padding: 10px 14px;
-  border: none;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.assign-task-btn:hover {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  text-decoration: none;
-  box-shadow: 0 2px 10px #c2c6cb66;
-}
-
-.task-action,
-.delete-task {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 11px;
-  font-size: 16px;
-  color: var(--text-color);
-  opacity: 1;
-}
-
-.assign-tasks {
-  padding: 1rem;
-  background-color: var(--bg-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.assigned-tasks-header {
+.cta-content h2 {
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--text-color);
-  font-size: 1.5rem;
 }
 
-.assigned-tasks-controls {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  align-items: center;
-}
-
-.filter-select {
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+.cta-content p {
   font-size: 1rem;
-  min-width: 200px;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  width: 15%;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 999px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.filter-select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.1);
-}
-
-@media screen and (max-width: 1025px) {
-  .assigned-tasks {
-    padding: 10px;
-  }
-
-   .due-date-col {
-    display: none;
-  }
-
-  .assigned-tasks-table th:nth-child(3),
-  .assigned-tasks-table td:nth-child(3) {
-    display: none;
-  }
+.cta-button:hover {
+  background-color: #fff;
+  color: var(--accent-color);
 }
 
 @media screen and (max-width: 768px) {
-  .assigned-tasks {
-    padding: 1.2rem 1.5rem;
-    height: auto;
-  }
-
-  .assigned-tasks-header {
-    font-size: 1.25rem;
-  }
-
-  .assigned-tasks-table th,
-  .assigned-tasks-table td {
-    font-size: 0.75rem;
-    padding: 0.5rem;
-  }
-
-  .search-input {
-    width: 100%;
-    font-size: 0.85rem;
-  }
-
-  .assign-task-btn {
-    font-size: 0.75rem;
-    padding: 9px 12px;
-  }
-  .assigned-tasks-controls {
-    gap: 10px;
-  }
-  .assigned-tasks-table-wrapper::-webkit-scrollbar {
-  height: 4px;
-}
-
-.due-date-col {
-  width: 120px;
-  text-align: center;
-  text-wrap: nowrap;
-}
-.task-action {
-  margin-left: 0;
-}
+ .cta-button {
+  width: 90%;
+ } 
+ .cta-content h2 {
+  font-size: 28px;
+ }
 }

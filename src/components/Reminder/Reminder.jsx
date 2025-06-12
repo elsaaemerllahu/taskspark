@@ -40,7 +40,7 @@ const ReminderList = () => {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ id, done: updatedDone })
+        body: JSON.stringify({ id, done: updatedDone, type: 'toggle' })
       });
 
       const data = await response.json();
@@ -97,7 +97,7 @@ const ReminderList = () => {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ id, text: trimmed })
+body: JSON.stringify({ id, text: trimmed, type: 'edit' })
       });
 
       const data = await response.json();
