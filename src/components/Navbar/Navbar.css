@@ -1,0 +1,135 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navbar-image{
+  width: 30px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  color: var(--accent-color);
+}
+
+.nav-profile-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow-y: auto;
+  z-index: 1000;
+  width: 140px;
+}
+
+.nav-dropdown-menu li {
+  padding: 12px;
+  cursor: pointer;
+    text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.nav-profile-button {
+    color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.nav-profile-avatar-small {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.2s ease;
+}
+
+.nav-profile-avatar-placeholder {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.nav-profile-avatar-placeholder svg {
+  font-size: 16px;
+}
+
+.nav-profile-dropdown:hover .profile-avatar-small {
+  transform: scale(1.1);
+}
+
+
+.nav-dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-logo {
+    font-size: 20px;
+    gap: 5px;
+  }
+  
+  .navbar-image {
+    width: 24px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links li {
+    font-size: 18px;
+  }
+}
+

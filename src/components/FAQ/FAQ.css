@@ -1,0 +1,47 @@
+.faq-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+
+}
+
+.faq-list {
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 250px;
+}
+
+.faq-item {
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.faq-item p {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+@media screen and (max-width: 800px) {
+  .faq-list {
+    padding: 0;
+  }
+  .faq-section h2 {
+line-height: 2.4rem;
+  }
+  .faq-item {
+    padding: 1rem;
+  }
+  
+}

@@ -1,0 +1,141 @@
+.timetracker {
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  padding: 35px;
+  width: 40%;
+  box-shadow: 0 2px 8px var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: start;
+}
+
+.timetracker-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timetracker-header {
+  margin: 0 0 40px 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  width: 100%;
+  text-align: left;
+  user-select: none;
+
+}
+
+.timetracker-time {
+  font-size: 3.5rem;
+  font-weight: 200;
+  color: var(--primary-text);
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  user-select: text;
+}
+
+.timetracker-controls {
+  display: flex;
+  gap: 15px;
+}
+
+.control-btn {
+  font-size: 1.4rem;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 
+    background-color 0.25s ease, 
+    transform 0.15s ease, 
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px var(--border-color);
+}
+
+.control-btn.reset {
+  background: #e74c3c;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+}
+
+.control-btn.start-stop {
+  color: var(--secondary-text);
+}
+
+.control-btn:hover {
+  background-color: var(--secondary-text);
+  color: white;
+  box-shadow: 0 6px 15px var(--border-color);
+  transform: scale(1.1);
+}
+
+.control-btn.reset:hover {
+  background-color: #c0392b;
+  box-shadow: 0 6px 15px rgba(192, 57, 43, 0.6);
+  transform: scale(1.1);
+}
+
+.control-btn:focus {
+  outline: 3px solid #b7b7b7;
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 1025px) {
+  .timetracker {
+    display: none;
+    width: 35%;
+    gap: 1rem;
+    padding: 10px;
+  }
+  .timetracker-header {
+    margin-bottom: 0;
+  }
+
+
+
+  .timetracker-time {
+    font-size: 30px;
+  }
+  .control-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .timetracker {
+    display: block;
+    width: 100%;
+    padding: 20px;    gap: 1rem;
+
+  }
+
+  .timetracker-header {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .timetracker-time {
+    font-size: 3.5rem;
+    margin-bottom: 0;
+  }
+.timetracker-controls {
+  justify-content: center;
+}
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,120 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  position: relative;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 16px;
+  width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: floatIn 0.4s ease forwards;
+}
+
+@keyframes floatIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.modal-buttons-assign {
+  display: flex;
+  justify-content: end;
+  gap: 0.75rem;
+}
+
+.modal-buttons-assign button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+    background-color: var(--secondary-text);
+color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons-assign .update {
+  background-color: var(--secondary-text);
+  color: #fff;
+}
+
+.modal-buttons-assign button:hover {
+  opacity: 0.9;
+}
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--secondary-text);
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close-btn:hover {
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    width: 80%;
+    padding: 1.5rem;
+  }
+
+  .modal h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal input,
+  .modal select {
+    font-size: 0.9rem;
+  }
+
+  .modal-buttons-assign button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+}

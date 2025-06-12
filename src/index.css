@@ -1,0 +1,62 @@
+:root {
+  --bg-color: #f8f8f8;
+  --text-color: #1f1f1f;
+  --secondary-text: #3a3a3a;
+  --primary-color: #28282899;
+  --secondary-color: #f3f3f3;
+  --tertiary-color: #9d9d9d;
+  --border-color: #00000024;
+  --accent-color: #ff63a4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+}
+
+textarea {
+    font-family: 'Inter', Arial, sans-serif;
+
+}
+
+.features-section,
+.how-it-works,
+.testimonials,
+.faq-section {
+  width: 80%;
+  margin: 120px auto;
+  text-align: center;
+}
+
+@media (max-width: 1025px) {
+  .features-section,
+  .how-it-works,
+  .testimonials,
+  .faq-section {
+    margin: 100px auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .features-section,
+  .how-it-works,
+  .testimonials,
+  .faq-section {
+    margin: 60px auto;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .sidebar {
+    width: 200px !important;
+    padding: 2rem 1rem !important;
+  }
+}

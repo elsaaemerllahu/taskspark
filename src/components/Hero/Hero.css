@@ -1,0 +1,19 @@
+.hero-section {
+  text-align: center;
+  background-color: #f7f7f7;
+  padding: 0;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0rem auto 2rem auto;
+}
+
+
+@media screen and (max-width: 800px) {
+  .hero-image {
+    margin: 0;
+  }
+  
+}
