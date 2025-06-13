@@ -8,6 +8,10 @@
   height: 585px;
 }
 
+.due-date-col {
+  width: 40px;
+}
+
 .assigned-tasks-header {
   font-weight: 600;
   font-size: 1.5rem;
@@ -115,10 +119,10 @@
   outline: none;
   border: none;
   cursor: pointer;
-  margin-left: 11px;
   font-size: 16px;
   color: var(--text-color);
   opacity: 1;
+  padding: 0;
 }
 
 .assign-tasks {

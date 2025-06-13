@@ -18,7 +18,7 @@ const [goalToDelete, setGoalToDelete] = useState(null);
   const [newGoal, setNewGoal] = useState({
     title: '',
     description: '',
-    target_date: '',
+    target_date: new Date().toISOString().split('T')[0],
     priority: 'medium',
     status: 'In Progress'
   });
@@ -215,8 +215,7 @@ const handleConfirmDelete = async () => {
         <div className="goals">
           <div className="goals-header">
             <div>
-              <h1>My Goals</h1>
-              <p className="goals-subtitle">Track and achieve your objectives</p>
+              <h1>Goals</h1>
             </div>
             <button className="add-goal-btn" onClick={() => setShowAddModal(true)} style={{
               backgroundColor: 'var(--accent-color)',
@@ -338,11 +337,7 @@ const handleConfirmDelete = async () => {
               </div>
             ))}
 
-            {filteredGoals.length === 0 && (
-              <div className="goal-item" style={{ textAlign: 'center', color: '#666' }}>
-                <p>No goals found. {searchTerm || filterPriority !== 'all' ? 'Try adjusting your filters.' : 'Add a new goal to get started!'}</p>
-              </div>
-            )}
+
           </div>
 
           {showAddModal && (

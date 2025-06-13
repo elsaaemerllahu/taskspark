@@ -108,7 +108,7 @@ const AssignedTasks = () => {
                   <td>{task.assigned_to}</td>
                   <td className='due-date-col'>{task.due_date}</td>
                   <td>{task.status}</td>
-                  <td>
+                  <td className='action-col'>
                     <button onClick={() => openEditModal(task)} className='task-action'><FaPen/></button>
                   </td>
                 </tr>

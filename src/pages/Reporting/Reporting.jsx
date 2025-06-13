@@ -27,6 +27,9 @@ const Reporting = () => {
   const [workingHours, setWorkingHours] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [goals, setGoals] = useState([]);
+  const [showBonusAlert, setShowBonusAlert] = useState(false);
+  const [pendingBonusData, setPendingBonusData] = useState(null);
+
   const [newEntry, setNewEntry] = useState({
     date: new Date().toISOString().split('T')[0],
     hours: '',
@@ -152,55 +155,6 @@ const Reporting = () => {
 
     fetchData();
   }, [currentUser]);
-
-  const handleAddEntry = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/backend/working-hours.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify(newEntry)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to add entry');
-      }
-
-      const data = await response.json();
-      setWorkingHours([data, ...workingHours]);
-      setShowAddModal(false);
-      setNewEntry({
-        date: new Date().toISOString().split('T')[0],
-        hours: '',
-        task_id: '',
-        goal_id: ''
-      });
-    } catch (err) {
-      setError('Failed to add entry. Please try again.');
-    }
-  };
-
-  const handleDeleteEntry = async (id) => {
-
-    try {
-      const response = await fetch(`/backend/working-hours.php?id=${id}`, {
-        method: 'DELETE',
-        credentials: 'include'
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete entry');
-      }
-
-      setWorkingHours(workingHours.filter(entry => entry.id !== id));
-    } catch (err) {
-      setError('Failed to delete entry. Please try again.');
-    }
-  };
-
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       weekday: 'short',
@@ -240,12 +194,97 @@ const Reporting = () => {
       </div>
     );
   }
+  const handleAddEntry = async (e) => {
+    e.preventDefault();
+
+    const entryDate = newEntry.date;
+    const newHours = parseFloat(newEntry.hours);
+
+    if (isNaN(newHours) || newHours <= 0) {
+      setError('Please enter a valid number of hours.');
+      return;
+    }
+
+    const totalHoursForDate = workingHours
+      .filter(entry => entry.date === entryDate)
+      .reduce((sum, entry) => sum + Number(entry.hours), 0);
+
+    const remainingRegular = Math.max(0, 8 - totalHoursForDate);
+
+    let entryToSend = { ...newEntry };
+
+    if (newHours <= remainingRegular) {
+      entryToSend.bonus = false;
+      await submitEntry(entryToSend);
+    } else {
+      setPendingBonusData({ entryToSend, entryDate, newHours, remainingRegular, totalHoursForDate });
+      setShowBonusAlert(true);
+      setShowAddModal(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/backend/working-hours.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(entryToSend)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add entry');
+      }
+
+      const data = await response.json();
+      setWorkingHours(prev => [data, ...prev]);
+      setShowAddModal(false);
+      setNewEntry({
+        date: new Date().toISOString().split('T')[0],
+        hours: '',
+        task_id: '',
+        goal_id: ''
+      });
+      setError(null);
+    } catch (err) {
+      setError('Failed to add entry. Please try again.');
+    }
+  };
+  const submitEntry = async (entryData) => {
+    const response = await fetch('/backend/working-hours.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(entryData)
+    });
+
+    if (!response.ok) throw new Error('Failed to add entry');
+    const data = await response.json();
+    setWorkingHours(prev => [data, ...prev]);
+  };
+
+  const handleDeleteEntry = async (id) => {
+
+    try {
+      const response = await fetch(`/backend/working-hours.php?id=${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete entry');
+      }
+
+      setWorkingHours(workingHours.filter(entry => entry.id !== id));
+    } catch (err) {
+      setError('Failed to delete entry. Please try again.');
+    }
+  };
 
   return (
     <div className="app-container">
       <Sidebar />
       <div className="main-content-reporting">
-        <div className="reporting" data-theme="light">
+        <div className="reporting">
           <div className="reporting-header">
             <h1>Reports & Analytics</h1>
           </div>
@@ -324,14 +363,17 @@ const Reporting = () => {
                       <span>{formatDate(entry.date)}</span>
                     </div>
                     <div className='entry-actions'>
-                      <div className="entry-hours">{entry.hours} hours</div>
+                      <div className={`entry-hours ${entry.bonus ? 'bonus-hours' : ''}`}>
+                        {entry.hours} {entry.bonus ? 'bonus ' : ''}hours
+                      </div>
+
                       <button
                         className="delete-entry"
                         onClick={() => handleDeleteEntry(entry.id)}
                         title="Delete Entry"
                       >
                         <FaTrash />
-                      </button>                      
+                      </button>
                     </div>
 
                   </div>
@@ -356,8 +398,8 @@ const Reporting = () => {
               {workingHours.length === 0 && !loading && (
                 <div className="no-entries">No working hours logged yet</div>
               )}
-            </div>
 
+            </div>
             {showAddModal && (
               <div className="modal-overlay" onClick={() => setShowAddModal(false)}>
                 <div className="modal" onClick={e => e.stopPropagation()}>
@@ -502,6 +544,60 @@ const Reporting = () => {
           </div>
         </div>
       </div>
+      {showBonusAlert && pendingBonusData && (
+  <div
+    className="custom-confirm-overlay"
+    onClick={(e) => {
+      // Close modal if user clicks on the overlay itself, not inside the box
+      if (e.target.classList.contains('custom-confirm-overlay')) {
+        setShowBonusAlert(false);
+        setPendingBonusData(null);
+      }
+    }}
+  >
+    <div className="custom-confirm-box">
+      <p>
+        You have {pendingBonusData.totalHoursForDate} hours logged for {pendingBonusData.entryDate}.<br />
+        Logging {pendingBonusData.newHours} more will exceed 8 hours.<br />
+        Do you want to log {pendingBonusData.newHours - pendingBonusData.remainingRegular} hours as bonus?
+      </p>
+      <div className="custom-confirm-buttons">
+        <button
+          onClick={async () => {
+            setShowBonusAlert(false);
+            if (pendingBonusData.remainingRegular > 0) {
+              const regularEntry = {
+                ...pendingBonusData.entryToSend,
+                hours: pendingBonusData.remainingRegular,
+                bonus: false
+              };
+              await submitEntry(regularEntry);
+            }
+            const bonusEntry = {
+              ...pendingBonusData.entryToSend,
+              hours: pendingBonusData.newHours - pendingBonusData.remainingRegular,
+              bonus: true
+            };
+            await submitEntry(bonusEntry);
+            setPendingBonusData(null);
+            setShowAddModal(false);
+            setNewEntry({
+              date: new Date().toISOString().split('T')[0],
+              hours: '',
+              task_id: '',
+              goal_id: ''
+            });
+            setError(null);
+          }}
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // src/pages/Signup/Signup.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../Login/Login.css'; // reuse login styles
+import '../Login/Login.css';
 import bgImg from "../../assets/taskspark-table.png";
 
 const Signup = () => {
@@ -14,6 +14,19 @@ const Signup = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return (
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /[0-9]/.test(password) &&
+      /[\W_]/.test(password)
+    );
+  };
+
   const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
@@ -23,6 +36,16 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setMessage("Please enter a valid email.");
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      setMessage("Password must be 8+ characters, include an uppercase letter, number, and symbol.");
+      return;
+    }
 
     try {
       const response = await fetch('/backend/signup.php', {
@@ -79,14 +102,15 @@ const Signup = () => {
             />
           </div>
 
-          <button type="submit">Sign Up</button>
-<div className="message-container">
+          <button type="submit">Sign up</button>  <div className="message-container">
             {message && <p className="login-error">{message}</p>}
           </div>
+
+
           <div className="create-account">
             <p>Already have an account?</p>
-          
-              <Link to="/login" className='sign-up-link'>Login</Link>
+
+            <Link to="/login" className='sign-up-link'>Log in</Link>
           </div>
         </form>
       </div>

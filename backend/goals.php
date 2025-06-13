@@ -146,6 +146,9 @@ elseif ($method === 'PUT') {
         if (isset($data['status'])) {
             $updates[] = "status = ?";
             $params[] = $data['status'];
+
+                $updates[] = "updated_at = NOW()";
+
         }
 
         if (empty($updates)) {

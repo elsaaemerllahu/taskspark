@@ -66,17 +66,20 @@ elseif ($method === 'POST') {
                 hours,
                 task_id,
                 goal_id,
-                created_at
-            ) VALUES (?, ?, ?, ?, ?, NOW())
+                created_at,
+                bonus
+            ) VALUES (?, ?, ?, ?, ?, NOW(), ?)
         ");
 
-$stmt->execute([
-    $user_id,
-    $data['date'],
-    $data['hours'],
-    !empty($data['task_id']) ? (int)$data['task_id'] : null,
-    !empty($data['goal_id']) ? (int)$data['goal_id'] : null
-]);
+        $stmt->execute([
+            $user_id,
+            $data['date'],
+            $data['hours'],
+            !empty($data['task_id']) ? (int)$data['task_id'] : null,
+            !empty($data['goal_id']) ? (int)$data['goal_id'] : null,
+        isset($data['bonus']) && $data['bonus'] ? 1 : 0
+
+        ]);
 
         // Return the newly created record
         $id = $pdo->lastInsertId();

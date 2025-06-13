@@ -25,6 +25,7 @@
     transform: translateY(20px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -66,8 +67,8 @@
   margin: 0;
   flex-grow: 1;
   overflow-y: auto;
-  max-height: 400px; /* adjust as needed */
-  padding-right: 8px; /* for scrollbar spacing */
+  max-height: 400px;
+  padding-right: 8px;
 }
 
 .reminderlist-items::-webkit-scrollbar {
@@ -218,8 +219,9 @@
 }
 
 .modal-buttons button:hover {
-background-color: var(--accent-color);  
+  background-color: var(--accent-color);
 }
+
 .done .reminder-text-input {
   text-decoration: line-through;
   color: #aaa;
@@ -229,18 +231,20 @@ background-color: var(--accent-color);
   .reminderlist {
     padding: 1.2rem 1.5rem;
   }
+
   .reminderlist-header {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
+
   .reminderlist-create {
     font-size: 0.9rem;
     margin-bottom: 0.8rem;
     justify-content: start;
   }
+
   .reminderlist-items {
-    max-height: none; /* Remove max-height for better responsiveness */
-    overflow-y: visible; /* Allow full visibility */
+    max-height: none;
+    overflow-y: visible;
   }
-  
 }

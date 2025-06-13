@@ -4,7 +4,7 @@ import './AssignTaskModal.css';
 const AssignTaskModal = ({ onClose, onTaskAdded }) => {
   const [title, setTitle] = useState('');
   const [assignedTo, setAssignedTo] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [dueDate, setDueDate] = useState(new Date().toISOString().split('T')[0]);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
