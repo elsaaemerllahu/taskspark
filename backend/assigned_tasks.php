@@ -30,10 +30,10 @@ if ($method === 'GET') {
     $filter = isset($_GET['assigned_to']) ? $_GET['assigned_to'] : null;
 
     if ($filter) {
-        $stmt = $pdo->prepare("SELECT * FROM assigned_tasks WHERE assigned_to LIKE ? ORDER BY due_date ASC");
+        $stmt = $pdo->prepare("SELECT * FROM assigned_tasks WHERE assigned_to LIKE ? ORDER BY due_date DESC");
         $stmt->execute(['%' . $filter . '%']);
     } else {
-        $stmt = $pdo->query("SELECT * FROM assigned_tasks ORDER BY due_date ASC");
+        $stmt = $pdo->query("SELECT * FROM assigned_tasks ORDER BY due_date DESC");
     }
 
     $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
