@@ -58,7 +58,7 @@
   transition: opacity 300ms ease, transform 300ms ease;
   opacity: 1;
   transform: translateY(0);
-  width: 60%;
+  width: 80%;
 }
 
 .activity-content.fade-out {

@@ -17,6 +17,8 @@ const Sidebar = () => {
     const [authenticated, setAuthenticated] = useState(false);
 
   
+  const accentColor = 'var(--accent-color)'; // fallback to blue if not set in CSS
+
 
 useEffect(() => {
   const fetchTasks = async () => {
@@ -132,7 +134,7 @@ const totalTasks = myIncompleteTasks.length;
               <FaTasks />
               {!isCollapsed && <span style={{ marginLeft: 8 }}>Tasks</span>}
             </div>
-            {totalTasks > 0 && <span style={{ marginLeft: isCollapsed ? 8 : 0 }}>{totalTasks}</span>}
+            {totalTasks > 0 && <span style={{ marginLeft: isCollapsed ? 8 : 0, color: accentColor }}>{totalTasks}</span>}
           </a>
           <a href="/reporting"><FaChartSimple /> {!isCollapsed && <span>Reporting</span>}</a>
           <a href="/goals" style={{ display: 'flex', alignItems: 'center', justifyContent: isCollapsed ? 'center' : 'space-between' }}>
@@ -140,7 +142,7 @@ const totalTasks = myIncompleteTasks.length;
               <FaMountain />
               {!isCollapsed && <span style={{ marginLeft: 8 }}>Goals</span>}
             </div>
-            {goalsCount > 0 && <span style={{ marginLeft: isCollapsed ? 8 : 0 }}>{goalsCount}</span>}
+            {goalsCount > 0 && <span style={{ marginLeft: isCollapsed ? 8 : 0, color: accentColor }}>{goalsCount}</span>}
           </a>
         </div>
       </nav>

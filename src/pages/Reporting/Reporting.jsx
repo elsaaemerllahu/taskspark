@@ -213,42 +213,25 @@ const Reporting = () => {
 
     let entryToSend = { ...newEntry };
 
-    if (newHours <= remainingRegular) {
-      entryToSend.bonus = false;
-      await submitEntry(entryToSend);
-    } else {
-      setPendingBonusData({ entryToSend, entryDate, newHours, remainingRegular, totalHoursForDate });
-      setShowBonusAlert(true);
-      setShowAddModal(false);
-      return;
-    }
+if (newHours <= remainingRegular) {
+  entryToSend.bonus = false;
+  await submitEntry(entryToSend);
+  setShowAddModal(false);
+  setNewEntry({
+    date: new Date().toISOString().split('T')[0],
+    hours: '',
+    task_id: '',
+    goal_id: ''
+  });
+  setError(null);
+} else {
+  setPendingBonusData({ entryToSend, entryDate, newHours, remainingRegular, totalHoursForDate });
+  setShowBonusAlert(true);
+  setShowAddModal(false);
+}
 
-    try {
-      const response = await fetch('/backend/working-hours.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(entryToSend)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to add entry');
-      }
-
-      const data = await response.json();
-      setWorkingHours(prev => [data, ...prev]);
-      setShowAddModal(false);
-      setNewEntry({
-        date: new Date().toISOString().split('T')[0],
-        hours: '',
-        task_id: '',
-        goal_id: ''
-      });
-      setError(null);
-    } catch (err) {
-      setError('Failed to add entry. Please try again.');
-    }
   };
+
   const submitEntry = async (entryData) => {
     const response = await fetch('/backend/working-hours.php', {
       method: 'POST',
