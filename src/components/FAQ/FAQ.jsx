@@ -60,16 +60,16 @@ const FAQ = () => {
             onClick={() => toggleFAQ(index)}
           >
             <h3>
-  <div className="faq-title">
-    <span className="faq-icon">{faq.icon}</span>
-    <span>{faq.question}</span>
-  </div>
-  <span className={`arrow ${openIndex === index ? "rotate" : ""}`}>
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M6 8L10 12L14 8" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  </span>
-</h3>
+              <div className="faq-title">
+                <span className="faq-icon">{faq.icon}</span>
+                <span>{faq.question}</span>
+              </div>
+              <span className={`arrow ${openIndex === index ? "rotate" : ""}`}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 8L10 12L14 8" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </h3>
 
             <p>{openIndex === index && faq.answer}</p>
           </div>

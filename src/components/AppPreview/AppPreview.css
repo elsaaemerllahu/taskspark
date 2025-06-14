@@ -42,9 +42,12 @@
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .preview-text {
     flex: 1 1 245px;
+  }
+  .preview-content {
+    padding: 0;
   }
 }
 
