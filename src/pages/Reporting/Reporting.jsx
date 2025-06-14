@@ -303,22 +303,22 @@ if (newHours <= remainingRegular) {
             </div>
           )}
 
-          <div className="reporting-stats">
-            <div className="stat-card">
+          <div className="reporting-goals-stats">
+            <div className="goals-stat-card">
               <h3>Total Tasks</h3>
-              <div className="stat-number">{stats.total}</div>
+              <div className="goals-stat-number">{stats.total}</div>
             </div>
-            <div className="stat-card">
+            <div className="goals-stat-card">
               <h3>Completed Tasks</h3>
-              <div className="stat-number">{stats.completed}</div>
+              <div className="goals-stat-number">{stats.completed}</div>
             </div>
-            <div className="stat-card">
+            <div className="goals-stat-card">
               <h3>Pending Tasks</h3>
-              <div className="stat-number">{stats.pending}</div>
+              <div className="goals-stat-number">{stats.pending}</div>
             </div>
-            <div className="stat-card">
+            <div className="goals-stat-card">
               <h3>Completion Rate</h3>
-              <div className="stat-number">{stats.completionRate}%</div>
+              <div className="goals-stat-number">{stats.completionRate}%</div>
             </div>
           </div>
 

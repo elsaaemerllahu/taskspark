@@ -14,11 +14,8 @@
   justify-content: space-between;
   margin: 0 auto;
   align-items: center;
-  width: 1200px;
-}
-.preview-text {
-  flex: 1 1 200px;
-  width: 100px;
+  padding: 0 5rem;
+  gap: 1rem;
 }
 
 .preview-text h2 {
@@ -55,9 +52,15 @@
   .preview-image {
     display: none;
   }
+  .app-preview {
+    padding: 2rem;
+  }
   .preview-text {
     flex: none;
     width: 100%;
     text-align: center;
+  }
+  .preview-content {
+    padding: 0;
   }
 }

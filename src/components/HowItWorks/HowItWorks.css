@@ -12,13 +12,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 3.5rem;
 }
 
 .step {
   background: #f9f9f9;
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 3.5rem 2.5rem;
   width: 330px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 
 .step:hover {
@@ -34,7 +34,7 @@
 }
 
 .step .icon {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--accent-color);
 }
 
@@ -67,6 +67,7 @@
     width: 100%;
     max-width: 300px;
     padding: 1.5rem;
+    gap: 1.2rem;
   }
 
   .step .icon {
@@ -74,7 +75,7 @@
   }
 
   .step h3 {
-    font-size: 24px;
+    font-size: 1.25rem;
   }
 
   .step p {

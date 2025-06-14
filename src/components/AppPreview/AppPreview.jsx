@@ -1,6 +1,6 @@
 import React from "react";
 import "./AppPreview.css";
-import appPreview from '../../assets/appPreview.png'
+import appPreview from '../../assets/tasksparkDashboard.png'
 
 const AppPreview = () => {
   return (

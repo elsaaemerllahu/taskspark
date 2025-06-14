@@ -1,6 +1,6 @@
 import './Hero.css';
-import dashboardImage from '../../assets/taskspark.png';
-import dashboardImageMobile from '../../assets/taskspark-mobile.png';
+import dashboardImage from '../../assets/taskspark-hero.png';
+import dashboardImageMobile from '../../assets/tasksparkMobile.png';
 
 const Hero = () => {
   return (
