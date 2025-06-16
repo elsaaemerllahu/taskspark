@@ -83,7 +83,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
         <img src={logo} alt="" className="navbar-image" />
-        TaskSpark
+        <h3>TaskSpark</h3>
       </div>
       <ul className="nav-links">
         <li>

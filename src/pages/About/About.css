@@ -59,7 +59,8 @@ width: 700px;
   padding: 0 150px;
 }
 
-.mission-section h2 {
+.mission-section 
+ {
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -289,7 +290,7 @@ width: 700px;
 .awards-section,
 .about-hero-section {
   width: 100%;
-  margin: 60px auto;
+  margin: 0 auto 60px auto;
   text-align: center;
 }
 .about-page {
@@ -303,10 +304,10 @@ width: 700px;
   }
 
   .about-hero-content h1 {
-    font-size: 42px;
+    font-size: 35px;
     line-height: 1.2;
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    width: 90%;
   }
 
   .about-hero-content p {
@@ -324,8 +325,9 @@ width: 700px;
   }
 
   .mission-section h2 {
+            border-top: 1px solid rgba(134, 134, 134, 0.304);
+
     font-size: 20px;
-    border-top: 1px solid #22222251;
 padding-top: 20px;
   }
   .mission-section h3 {
@@ -334,18 +336,19 @@ padding-top: 20px;
   .mission-section p {
     font-size: 14px;
     max-width: 100%;
-    border-bottom: 1px solid #22222251;
+        border-bottom: 1px solid rgba(134, 134, 134, 0.304);
     padding-bottom: 20px;
   }
 
   .team-header {
     flex-direction: column;
-    gap: 5px;
+    gap: 20px;
   }
 
   .team-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
+    margin-top: 0;
   }
 
   .team-card {
@@ -365,21 +368,28 @@ padding-top: 20px;
   }
 
   .team-left-section h2 {
-    font-size: 36px;
+    font-size: 33px;
+    text-align: left;
+        border-bottom: 1px solid rgba(134, 134, 134, 0.304);
+    margin-bottom: 20px;
   }
-
-  .team-left-section p{
-    text-align: center;
+  .team-header {
+    text-align: left;
+    align-items: start;
+        padding-left:  20px;
   }
   .h2s {
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 20px;
   }
 .h2s h2 {
-    font-size: 36px;
-    text-align: center;
+    font-size: 33px;
+    text-align: left;
     margin-bottom: 0;
+        border-bottom: 1px solid rgba(134, 134, 134, 0.304);
+    margin-bottom: 20px;
+    width: 65%;
   }
   .why-choose-image {
     display: none;
@@ -414,7 +424,7 @@ padding-top: 20px;
   }
 
   .awards-section {
-    margin: 0;
+    margin-bottom: 30px;
   }
 
   .awards-table th {
@@ -423,5 +433,13 @@ padding-top: 20px;
   .awards-table tbody td:nth-child(3),
     .awards-table th:nth-child(3){
     display: none;
+  }
+
+  .awards-section h2 {
+    font-size: 33px;
+    margin-left: 10px;
+            border-bottom: 1px solid rgba(134, 134, 134, 0.304);
+            width: 65%;
+
   }
 }
